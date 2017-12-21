@@ -5,11 +5,12 @@ namespace reyco {
 class App {
 public:
   using Argv = std::vector<std::string_view>;
-  using EntryPoint = void (*)(const Argv &);
+  using EntryPoint = bool (*)(const Argv &);
   App(EntryPoint entryPoint, const Argv &argv)
       : entryPoint(entryPoint), argv(argv) {
     try {
-      entryPoint(argv);
+      while (entryPoint(argv))
+        ;
     } catch (...) {
       throw;
     }

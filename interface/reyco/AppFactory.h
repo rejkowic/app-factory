@@ -9,9 +9,11 @@ class App;
 
 struct AppFactory : std::unique_ptr<App> {
   using Argv = std::vector<std::string_view>;
-  using EntryPoint = void (*)(const Argv &);
+  using EntryPoint = bool (*)(const Argv &);
+
   ~AppFactory();
   static AppFactory make(EntryPoint entryPoint, int argc, char *argv[]);
   operator int();
 };
 }
+
