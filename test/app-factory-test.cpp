@@ -3,7 +3,7 @@
 
 namespace reyco {
 
-void hello(const AppFactory::Argv &) { throw std::runtime_error{"Hello"}; }
+bool hello(const AppFactory::Argv &) { throw std::runtime_error{"Hello"}; }
 }
 
 int main(int argc, char *argv[]) {
