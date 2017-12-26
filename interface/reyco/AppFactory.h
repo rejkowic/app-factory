@@ -13,7 +13,7 @@ struct AppFactory : std::unique_ptr<App> {
 
   ~AppFactory();
   static AppFactory make(EntryPoint entryPoint, int argc, char *argv[]);
+  static AppFactory make(void (*entryPoint)());
   operator int();
 };
 }
-
